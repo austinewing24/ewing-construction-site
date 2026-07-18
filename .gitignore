@@ -1,0 +1,7 @@
+# Claude Code local session data
+.claude/
+
+# Raw source material not used by the live site
+Project Photos/
+Banner (black).pdf
+Logo (black).pdf

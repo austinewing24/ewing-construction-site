@@ -582,13 +582,85 @@ section { padding: 4.5rem 0; }
   display: block;
 }
 
-/* ---- Form ---- */
-.form-wrap {
-  background: var(--color-white);
+/* ---- Contact page: split card layout ---- */
+.contact-card {
+  display: grid;
+  grid-template-columns: 1fr;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 2rem;
+  border-radius: 12px;
+  overflow: hidden;
 }
+@media (min-width: 900px) {
+  .contact-card { grid-template-columns: 35% 65%; }
+}
+.contact-panel {
+  background: #2E2A22;
+  color: #F3EFE6;
+  padding: 3rem 2.25rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.contact-panel-content { position: relative; z-index: 1; }
+.contact-panel h2 {
+  font-family: "Fraunces", var(--font-display);
+  font-weight: 600;
+  color: #F3EFE6;
+  font-size: clamp(1.6rem, 2vw + 1.2rem, 2.1rem);
+  margin-bottom: 0.75rem;
+}
+.contact-panel-content > p {
+  color: #d9d2c2;
+  margin-bottom: 2rem;
+}
+.info-block { margin-bottom: 1.5rem; }
+.info-block:last-child { margin-bottom: 0; }
+.info-label {
+  display: block;
+  font-family: "Space Grotesk", var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b9ac8f;
+  margin-bottom: 0.3rem;
+}
+.info-value {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #F3EFE6;
+}
+.contact-form-panel {
+  background: var(--color-white);
+  padding: 2.5rem;
+}
+.contact-form-panel .btn-primary {
+  background: #2E2A22;
+  color: #F3EFE6;
+  font-family: "Space Grotesk", var(--font-body);
+}
+.contact-form-panel .btn-primary:hover { background: #1f1c17; }
+
+.form-row-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+@media (max-width: 480px) {
+  .form-row-3 { grid-template-columns: 1fr; }
+}
+.compact-question label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+.compact-question .pill-group { gap: 0.4rem; }
+.compact-question .pill-option span { padding: 0.5rem 0.85rem; font-size: 0.8rem; }
+
+/* ---- Form ---- */
 .form-row { margin-bottom: 1.25rem; }
 .form-row label {
   display: block;

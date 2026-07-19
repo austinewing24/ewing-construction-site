@@ -21,29 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
     onScroll();
   }
 
-  // Contact form: project-type tabs show/hide their qualifying questions
-  var typeTabs = document.querySelector(".type-tabs");
-  if (typeTabs) {
-    var tabs = typeTabs.querySelectorAll(".type-tab");
-    var groups = document.querySelectorAll("[data-type-group]");
-    var projectTypeField = document.getElementById("project_type_value");
-    typeTabs.addEventListener("click", function (e) {
-      var tab = e.target.closest(".type-tab");
-      if (!tab) return;
-      tabs.forEach(function (t) {
-        t.classList.remove("is-active");
-        t.setAttribute("aria-pressed", "false");
-      });
-      tab.classList.add("is-active");
-      tab.setAttribute("aria-pressed", "true");
-      var type = tab.getAttribute("data-type");
-      if (projectTypeField) projectTypeField.value = tab.textContent.trim();
-      groups.forEach(function (g) {
-        g.hidden = g.getAttribute("data-type-group") !== type;
-      });
-    });
-  }
-
   // Contact form: "I'm not sure yet" disables the month/year timeline selects
   document.querySelectorAll(".not-sure-check input[type=checkbox]").forEach(function (cb) {
     cb.addEventListener("change", function () {

@@ -86,18 +86,17 @@
           -->
           <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
             <input type="hidden" name="form-name" value="contact">
-            <input type="hidden" id="project_type_value" name="project_type" value="Custom Home">
             <p class="visually-hidden">
               <label>Don&rsquo;t fill this out if you're human: <input name="bot-field"></label>
             </p>
 
-            <!-- Project type tabs: reveals a tailored set of qualifying questions per audience -->
             <div class="form-row">
               <label>I&rsquo;m interested in&hellip;</label>
-              <div class="type-tabs" role="group" aria-label="Project type">
-                <button type="button" class="type-tab is-active" data-type="custom" aria-pressed="true">Custom Home</button>
-                <button type="button" class="type-tab" data-type="spec" aria-pressed="false">Spec Home Investment</button>
-                <button type="button" class="type-tab" data-type="commercial" aria-pressed="false">Commercial</button>
+              <div class="pill-group" role="radiogroup" aria-label="Project type">
+                <label class="pill-option"><input type="radio" name="project_type" value="Custom Home"><span>Custom Home</span></label>
+                <label class="pill-option"><input type="radio" name="project_type" value="Spec Home Investment"><span>Spec Home Investment</span></label>
+                <label class="pill-option"><input type="radio" name="project_type" value="Commercial"><span>Commercial</span></label>
+                <label class="pill-option"><input type="radio" name="project_type" value="Other"><span>Other</span></label>
               </div>
             </div>
 
@@ -116,89 +115,60 @@
               <input type="email" id="email" name="email" required autocomplete="email">
             </div>
 
-            <!-- Custom Home questions -->
-            <div class="form-conditional" data-type-group="custom">
-              <span class="conditional-eyebrow">About Your Custom Home</span>
-              <div class="form-row">
-                <label for="build_location">Where would you like to build?</label>
-                <input type="text" id="build_location" name="build_location" placeholder="e.g. Park City, Farmington, or a specific lot">
+            <span class="conditional-eyebrow">About Your Project</span>
+            <div class="form-row">
+              <label for="project_location">Project location</label>
+              <input type="text" id="project_location" name="project_location" placeholder="e.g. Park City, Farmington, or a specific lot">
+            </div>
+            <div class="form-row">
+              <label for="company">Company name (if applicable)</label>
+              <input type="text" id="company" name="company" autocomplete="organization">
+            </div>
+            <div class="form-row">
+              <label for="build_month">When would you like to start?</label>
+              <div class="timeline-row">
+                <select id="build_month" name="build_month" aria-label="Target start month">
+                  <option value="">Month</option>
+                  <option>January</option><option>February</option><option>March</option><option>April</option>
+                  <option>May</option><option>June</option><option>July</option><option>August</option>
+                  <option>September</option><option>October</option><option>November</option><option>December</option>
+                </select>
+                <select id="build_year" name="build_year" aria-label="Target start year">
+                  <option value="">Year</option>
+                  <option>2026</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option>
+                </select>
               </div>
-              <div class="form-row">
-                <label for="build_month">When would you like to build?</label>
-                <div class="timeline-row">
-                  <select id="build_month" name="build_month" aria-label="Target build month">
-                    <option value="">Month</option>
-                    <option>January</option><option>February</option><option>March</option><option>April</option>
-                    <option>May</option><option>June</option><option>July</option><option>August</option>
-                    <option>September</option><option>October</option><option>November</option><option>December</option>
-                  </select>
-                  <select id="build_year" name="build_year" aria-label="Target build year">
-                    <option value="">Year</option>
-                    <option>2026</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option>
-                  </select>
+              <label class="not-sure-check">
+                <input type="checkbox" name="build_timeline_unsure" value="Yes">
+                I&rsquo;m not sure yet
+              </label>
+            </div>
+            <div class="form-row-3">
+              <div class="compact-question">
+                <label>Building lot?</label>
+                <div class="pill-group" role="radiogroup" aria-label="Do you already have a building lot?">
+                  <label class="pill-option"><input type="radio" name="has_lot" value="Yes"><span>Yes</span></label>
+                  <label class="pill-option"><input type="radio" name="has_lot" value="No"><span>No</span></label>
                 </div>
-                <label class="not-sure-check">
-                  <input type="checkbox" name="build_timeline_unsure" value="Yes">
-                  I&rsquo;m not sure yet
-                </label>
               </div>
-              <div class="form-row-3">
-                <div class="compact-question">
-                  <label>Building lot?</label>
-                  <div class="pill-group" role="radiogroup" aria-label="Do you already have a building lot?">
-                    <label class="pill-option"><input type="radio" name="has_lot" value="Yes"><span>Yes</span></label>
-                    <label class="pill-option"><input type="radio" name="has_lot" value="No"><span>No</span></label>
-                  </div>
+              <div class="compact-question">
+                <label>Architect?</label>
+                <div class="pill-group" role="radiogroup" aria-label="Do you have an architect?">
+                  <label class="pill-option"><input type="radio" name="has_architect" value="Yes"><span>Yes</span></label>
+                  <label class="pill-option"><input type="radio" name="has_architect" value="No"><span>No</span></label>
                 </div>
-                <div class="compact-question">
-                  <label>Architect?</label>
-                  <div class="pill-group" role="radiogroup" aria-label="Do you have an architect?">
-                    <label class="pill-option"><input type="radio" name="has_architect" value="Yes"><span>Yes</span></label>
-                    <label class="pill-option"><input type="radio" name="has_architect" value="No"><span>No</span></label>
-                  </div>
-                </div>
-                <div class="compact-question">
-                  <label>Interior designer?</label>
-                  <div class="pill-group" role="radiogroup" aria-label="Do you have an interior designer?">
-                    <label class="pill-option"><input type="radio" name="has_interior_designer" value="Yes"><span>Yes</span></label>
-                    <label class="pill-option"><input type="radio" name="has_interior_designer" value="No"><span>No</span></label>
-                  </div>
+              </div>
+              <div class="compact-question">
+                <label>Interior designer?</label>
+                <div class="pill-group" role="radiogroup" aria-label="Do you have an interior designer?">
+                  <label class="pill-option"><input type="radio" name="has_interior_designer" value="Yes"><span>Yes</span></label>
+                  <label class="pill-option"><input type="radio" name="has_interior_designer" value="No"><span>No</span></label>
                 </div>
               </div>
             </div>
-
-            <!-- Spec Home Investment questions -->
-            <div class="form-conditional" data-type-group="spec" hidden>
-              <span class="conditional-eyebrow">About Your Investment</span>
-              <div class="form-row">
-                <label for="target_area">Target area or town</label>
-                <input type="text" id="target_area" name="target_area" placeholder="e.g. Bountiful, Kaysville">
-              </div>
-              <div class="form-row">
-                <label for="budget_range">Target budget range</label>
-                <input type="text" id="budget_range" name="budget_range" placeholder="e.g. $800K to $1.2M">
-              </div>
-            </div>
-
-            <!-- Commercial questions -->
-            <div class="form-conditional" data-type-group="commercial" hidden>
-              <span class="conditional-eyebrow">About Your Commercial Project</span>
-              <div class="form-row">
-                <label for="company">Company name</label>
-                <input type="text" id="company" name="company" autocomplete="organization">
-              </div>
-              <div class="form-row">
-                <label for="project_location">Project location</label>
-                <input type="text" id="project_location" name="project_location" placeholder="e.g. Kaysville, UT">
-              </div>
-              <div class="form-row">
-                <label>Are you the general contractor or the property owner?</label>
-                <div class="pill-group" role="radiogroup" aria-label="Are you the general contractor or the property owner?">
-                  <label class="pill-option"><input type="radio" name="commercial_role" value="General Contractor"><span>GC</span></label>
-                  <label class="pill-option"><input type="radio" name="commercial_role" value="Property Owner"><span>Owner</span></label>
-                  <label class="pill-option"><input type="radio" name="commercial_role" value="Other"><span>Other</span></label>
-                </div>
-              </div>
+            <div class="form-row">
+              <label for="budget_range">Target budget range</label>
+              <input type="text" id="budget_range" name="budget_range" placeholder="e.g. $800K to $1.2M">
             </div>
 
             <div class="form-row">

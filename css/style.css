@@ -693,11 +693,6 @@ section { padding: 4.5rem 0; }
 @media (min-width: 640px) {
   .form-row-2 { grid-template-columns: 1fr 1fr; }
 }
-.form-note {
-  font-size: 0.85rem;
-  color: var(--color-text-light);
-  margin-top: 1rem;
-}
 
 /* ---- Contact form: pill radios, timeline ---- */
 .conditional-eyebrow {
